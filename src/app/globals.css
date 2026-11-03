@@ -1,26 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --bg-primary: #f4f4f5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafafa;
+  --bg-dark: #121212;
+  --bg-dark-card: #1c1c1c;
+  --accent-yellow: #f8dc6c;
+  --accent-yellow-bright: #ffdc50;
+  --text-primary: #121212;
+  --text-muted: #71717a;
+  --border-subtle: #e4e4e7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-montserrat), 'Montserrat', sans-serif;
+  --font-mono: monospace;
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-dark: var(--bg-dark);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-yellow-bright: var(--accent-yellow-bright);
+  --color-text-primary: var(--text-primary);
+  --color-text-muted: var(--text-muted);
+  --color-border-subtle: var(--border-subtle);
+
+  /* High blur, low opacity ambient drop shadows */
+  --shadow-sm: 0 16px 36px -10px rgba(0, 0, 0, 0.035), 0 2px 8px -2px rgba(0, 0, 0, 0.015);
+  --shadow-md: 0 28px 60px -14px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 36px 72px -16px rgba(0, 0, 0, 0.06), 0 6px 16px -3px rgba(0, 0, 0, 0.025);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom high-blur, ultra-low-opacity ambient card shadow utility */
+.card-soft-shadow {
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.035), 0 2px 8px -2px rgba(0, 0, 0, 0.015);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s ease;
+}
+
+.card-soft-shadow:hover {
+  box-shadow: 0 30px 65px -15px rgba(0, 0, 0, 0.055), 0 4px 14px -2px rgba(0, 0, 0, 0.02);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif !important;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Force Montserrat across the entire website per user request */
+*, *::before, *::after,
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button, input, textarea, label, select {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif !important;
+}
+
+[class*="font-"] {
+  font-family: var(--font-montserrat), 'Montserrat', sans-serif !important;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

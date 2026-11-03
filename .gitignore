@@ -23,6 +23,8 @@
 # misc
 .DS_Store
 *.pem
+/*.mp4
+Trent_Kelly_Website_Blueprint_*.docx
 
 # debug
 npm-debug.log*

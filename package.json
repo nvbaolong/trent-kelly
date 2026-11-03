@@ -9,9 +9,16 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@iconify-json/solar": "^1.2.13",
+    "@iconify/react": "^6.0.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^14.9.0",
+    "lucide-react": "^1.66.0",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "solar-icon-set": "^2.0.1",
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
