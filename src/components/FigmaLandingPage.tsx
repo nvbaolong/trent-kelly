@@ -22,6 +22,7 @@ import {
   MapPointLinear,
   SettingsMinimalisticBold,
   CheckCircleBold,
+  CloseCircleLinear,
 } from "solar-icon-set";
 
 // Image assets
@@ -1306,25 +1307,14 @@ export default function FigmaLandingPage() {
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 md:p-8"
           onClick={() => setIsVideoModalOpen(false)}
         >
-          {/* Top-Right Corner Close Button (Only Close Icon) */}
+          {/* Top-Right Corner Close Button (Solar Icon CloseCircleLinear) */}
           <button
             type="button"
             onClick={() => setIsVideoModalOpen(false)}
             aria-label="Close video"
-            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 active:scale-95 p-2.5 sm:p-3 rounded-full transition-all duration-200 cursor-pointer z-50 backdrop-blur-md shadow-lg"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 active:scale-95 p-2 rounded-full transition-all duration-200 cursor-pointer z-50 backdrop-blur-md shadow-lg flex items-center justify-center"
           >
-            <svg
-              className="size-5 sm:size-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="6" />
-            </svg>
+            <CloseCircleLinear size={28} />
           </button>
 
           {/* Video Container (With Sound and Controls) */}

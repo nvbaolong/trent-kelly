@@ -10,6 +10,7 @@ import {
   AltArrowRightLinear,
   CheckCircleBold,
   ArrowRightLinear,
+  CloseCircleLinear,
 } from "solar-icon-set";
 
 const imgScreenshotTrent = "/figma-assets/0573e1610acc04d2a77892cad5e7a1f95c3b3f3c.png";
@@ -161,25 +162,14 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-zinc-200/80 flex flex-col md:flex-row max-h-[92vh] text-[#121212]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top-Right Close Button */}
+        {/* Top-Right Close Button (Solar Icon CloseCircleLinear) */}
         <button
           type="button"
           onClick={handleClose}
           aria-label="Close booking modal"
-          className="absolute top-4 right-4 text-zinc-400 hover:text-black bg-zinc-100 hover:bg-zinc-200 p-2 rounded-full transition-colors cursor-pointer z-20 shadow-xs"
+          className="absolute top-4 right-4 text-zinc-400 hover:text-black bg-zinc-100 hover:bg-zinc-200 p-1.5 rounded-full transition-colors cursor-pointer z-20 shadow-xs flex items-center justify-center"
         >
-          <svg
-            className="size-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="6" />
-          </svg>
+          <CloseCircleLinear size={22} />
         </button>
 
         {/* =========================================================================
