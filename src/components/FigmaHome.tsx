@@ -66,7 +66,7 @@ export default function Home() {
     <div className="bg-[#fcfcfd] content-stretch flex flex-col items-center relative size-full" data-node-id="1:5" data-name="Home">
       <div className="h-[955px] overflow-clip relative shrink-0 w-[1440px]" data-node-id="1:6" data-name="Hero">
         <div aria-hidden className="absolute inset-0 pointer-events-none">
-          <video autoPlay loop muted playsInline preload="auto" className="absolute max-w-none object-cover size-full" src="/trent-01.mp4" />
+          <video autoPlay loop muted playsInline preload="auto" className="absolute max-w-none object-cover size-full" src="/sequence-01.mp4" />
           <div className="absolute inset-0 bg-black/40 pointer-events-none" />
           <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.7)] from-[6.944%] via-transparent to-[rgba(0,0,0,0.3)] inset-0 pointer-events-none" />
         </div>

@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import {
   StarBold,
+  PlayBold,
   ArrowRightUpLinear,
   ArrowRightLinear,
   ArrowLeftLinear,
@@ -238,7 +239,26 @@ export default function FigmaLandingPage() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [activeSolution, setActiveSolution] = useState(0);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsVideoModalOpen(false);
+      }
+    };
+    if (isVideoModalOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isVideoModalOpen]);
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (carouselRef.current) {
@@ -281,7 +301,7 @@ export default function FigmaLandingPage() {
             playsInline
             preload="auto"
             className="absolute inset-0 w-full h-full object-cover opacity-95"
-            src="/trent-01.mp4"
+            src="/sequence-01.mp4"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/50" />
         </div>
@@ -378,14 +398,15 @@ export default function FigmaLandingPage() {
 
           {/* Hero 2 CTA Buttons as requested by User */}
           <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4">
-            {/* Button 1: Explore Consulting Services (navigates to #solutions) */}
-            <a
-              href="#solutions"
+            {/* Button 1: Play Video (Opens full video modal with audio) */}
+            <button
+              type="button"
+              onClick={() => setIsVideoModalOpen(true)}
               className="inline-flex items-center gap-2.5 bg-[#f8dc6c] hover:bg-[#ffdc50] text-black font-semibold text-xs sm:text-sm md:text-base px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 group cursor-pointer"
             >
-              <span>Explore Services</span>
-              <ArrowRightLinear size={18} className="text-black group-hover:translate-x-0.5 transition-transform" />
-            </a>
+              <PlayBold size={18} className="text-black group-hover:scale-110 transition-transform" />
+              <span>Play Video</span>
+            </button>
 
             {/* Button 2: Connect on LinkedIn with official LinkedIn logo */}
             <a
@@ -1271,6 +1292,53 @@ export default function FigmaLandingPage() {
 
         </div>
       </footer>
+
+      {/* =========================================================================
+          FULL VIDEO MODAL (With Sound & Clean Top-Right Close Icon Button)
+         ========================================================================= */}
+      {isVideoModalOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 md:p-8"
+          onClick={() => setIsVideoModalOpen(false)}
+        >
+          {/* Top-Right Corner Close Button (Only Close Icon) */}
+          <button
+            type="button"
+            onClick={() => setIsVideoModalOpen(false)}
+            aria-label="Close video"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 active:scale-95 p-2.5 sm:p-3 rounded-full transition-all duration-200 cursor-pointer z-50 backdrop-blur-md shadow-lg"
+          >
+            <svg
+              className="size-5 sm:size-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="6" />
+            </svg>
+          </button>
+
+          {/* Video Container (With Sound and Controls) */}
+          <div
+            className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/15"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <video
+              autoPlay
+              controls
+              playsInline
+              className="size-full object-contain bg-black"
+              src="/sequence-01.mp4"
+            />
+          </div>
+        </div>
+      )}
 
     </div>
   );
