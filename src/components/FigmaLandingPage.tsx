@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import BookingModal from "./BookingModal";
+import CareerTimeline from "./CareerTimeline";
 import {
   StarBold,
   PlayBold,
@@ -652,6 +653,11 @@ export default function FigmaLandingPage() {
           </div>
         </div>
       </section>
+
+      {/* =========================================================================
+          4b. CAREER TIMELINE (Trent Kelly's Journey)
+         ========================================================================= */}
+      <CareerTimeline />
 
       {/* =========================================================================
           5. TAILORED PITCH SOLUTIONS (Consulting Services)
