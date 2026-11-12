@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import BookingModal from "./BookingModal";
 import {
   StarBold,
   PlayBold,
@@ -240,6 +241,7 @@ export default function FigmaLandingPage() {
   const [submitted, setSubmitted] = useState(false);
   const [activeSolution, setActiveSolution] = useState(0);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -360,8 +362,9 @@ export default function FigmaLandingPage() {
             </nav>
 
             {/* Action Button: Direct Contact / Book a Call (Figma Glassmorphism + Available Indicator) */}
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => setIsBookingModalOpen(true)}
               className="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold text-xs sm:text-sm pl-2 pr-4 py-1.5 sm:py-2 rounded-xl transition-all duration-200 active:scale-95 shadow-sm group cursor-pointer"
             >
               {/* Larger Avatar with Green Available Indicator */}
@@ -377,7 +380,7 @@ export default function FigmaLandingPage() {
               <span className="tracking-tight text-white group-hover:text-[#ffdc50] transition-colors">
                 Book a call
               </span>
-            </a>
+            </button>
           </div>
         </header>
 
@@ -1339,6 +1342,14 @@ export default function FigmaLandingPage() {
           </div>
         </div>
       )}
+
+      {/* =========================================================================
+          CALENDLY-STYLE BOOKING POPUP MODAL
+         ========================================================================= */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
 
     </div>
   );
