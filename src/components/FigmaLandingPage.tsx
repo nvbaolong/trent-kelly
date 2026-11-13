@@ -287,7 +287,7 @@ export default function FigmaLandingPage() {
   };
 
   return (
-    <div className="bg-[#f4f4f5] flex flex-col items-center relative w-full min-h-screen selection:bg-[#ffdc50] selection:text-black overflow-x-hidden font-sans">
+    <div className="bg-[#f4f4f5] flex flex-col items-center relative w-full min-h-screen selection:bg-[#ffdc50] selection:text-black overflow-x-clip font-sans">
       
       {/* =========================================================================
           1. HERO SECTION (Fullscreen, Video, Reduced Text, 2 Custom CTA Buttons)
